@@ -19,7 +19,7 @@ func TestExamplesStableOutput(t *testing.T) {
 	c := qt.New(t)
 
 	var previous string
-	for i := 0; i < 3; i++ {
+	for i := range 3 {
 		in, err := os.Open(filepath.Join(basePath, "circuits.txt"))
 		if err != nil {
 			t.Fatal(err)
