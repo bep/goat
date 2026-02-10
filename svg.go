@@ -50,7 +50,7 @@ func BuildAndWriteSVG(src io.Reader, dst io.Writer) {
 	writeBytes(dst, "</svg>\n")
 }
 
-func writeBytes(out io.Writer, format string, args ...interface{}) {
+func writeBytes(out io.Writer, format string, args ...any) {
 	bytesOut := fmt.Sprintf(format, args...)
 
 	_, err := out.Write([]byte(bytesOut))

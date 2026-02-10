@@ -6,8 +6,8 @@ func upDown(width int, height int) chan Index {
 	c := make(chan Index, width*height)
 
 	go func() {
-		for w := 0; w < width; w++ {
-			for h := 0; h < height; h++ {
+		for w := range width {
+			for h := range height {
 				c <- Index{w, h}
 			}
 		}
@@ -40,8 +40,8 @@ func diagDown(width int, height int) chan Index {
 		maxSum := width
 
 		for sum := minSum; sum <= maxSum; sum++ {
-			for w := 0; w < width; w++ {
-				for h := 0; h < height; h++ {
+			for w := range width {
+				for h := range height {
 					if w-h == sum {
 						c <- Index{w, h}
 					}
@@ -61,8 +61,8 @@ func diagUp(width int, height int) chan Index {
 		maxSum := width + height - 2
 
 		for sum := 0; sum <= maxSum; sum++ {
-			for w := 0; w < width; w++ {
-				for h := 0; h < height; h++ {
+			for w := range width {
+				for h := range height {
 					if h+w == sum {
 						c <- Index{w, h}
 					}

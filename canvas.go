@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"bytes"
 	"io"
+	"slices"
 	"sort"
 )
 
@@ -31,12 +32,7 @@ var reservedRunes = map[rune]bool{
 }
 
 func contains(in []rune, r rune) bool {
-	for _, v := range in {
-		if r == v {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(in, r)
 }
 
 func isJoint(r rune) bool {
